@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Social.Network.Domain\Social.Network.Domain.csproj" />
+    <ProjectReference Include="..\Social.Network.Repository\Social.Network.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

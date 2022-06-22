@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3fy2mWZACIUM/jCrDgM3vEYyTvTXgy6fSvJZ710eu+Q5fViObvNJPX/VzwjR4Z4YBvqklEub0F3/v3HbGHDlwA==",
+  "dgSpecHash": "d/ckea6T2nS4lgJFAGNvDKzEvJ2GtB8JXMfCi1HkDMHwFptPaWmD7cd0cPOHoxFZ34XkYlVtbFUJXKCj6B3FRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network\\Social.Network.csproj",
+  "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -43,8 +43,6 @@
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
-    "C:\\Users\\Mohammad\\.nuget\\packages\\mysqlconnector\\1.1.0\\mysqlconnector.1.1.0.nupkg.sha512",
-    "C:\\Users\\Mohammad\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\5.0.0-alpha.2\\pomelo.entityframeworkcore.mysql.5.0.0-alpha.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
