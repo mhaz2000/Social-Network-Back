@@ -8,4 +8,12 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0-alpha.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Social.Network.Repository.Implementation\Social.Network.Repository.Implementation.csproj" />
+  </ItemGroup>
+
 </Project>
