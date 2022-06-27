@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "P45HtYd6mBxQgEgPE61PVf2rlllGW4roqKP281EynPgZ47suvQMbZHDopCciWOhy038gVaZjWjpAnYdo38J3dw==",
+  "dgSpecHash": "CIguaz1MB7bD/+i+NQT5YpgvUuYs2cbNHWEwEqS73k5rrIiHEUFIndgrhXHspcsjOsamGAbOjBivuJOTdbsJTQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Message\\Social.Network.Message.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mohammad\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

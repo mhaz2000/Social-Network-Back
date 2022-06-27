@@ -1,26 +1,52 @@
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Social.Network.SeedWorks.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace Social.Network
 {
     public class Program
     {
+        public static AppSettingsModel AppSettingsInfo { get; private set; }
+
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                ReadAppSettingsInfo();
+
+                var host = CreateWebHostBuilder(args).Build().Seed();
+                host.Run();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        private static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var builder = WebHost.CreateDefaultBuilder(args);
+            builder.UseContentRoot(Directory.GetCurrentDirectory());
+
+            builder = builder.UseHttpSys().UseUrls(AppSettingsInfo.HostAddress);
+
+            return builder
+                .UseStartup<Startup>();
+        }
+
+        public static void ReadAppSettingsInfo()
+        {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appSettings.json")
+                .Build();
+
+            AppSettingsInfo = config.Get<AppSettingsModel>();
+        }
     }
 }

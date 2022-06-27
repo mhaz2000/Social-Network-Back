@@ -39,6 +39,11 @@ namespace Social.Network.Repository.Implementation.Implementations
             return Context.Set<TEntity>().Where(predicate);
         }
 
+        public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await Context.Set<TEntity>().AnyAsync(predicate);
+        }
+
         public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await Context.Set<TEntity>().Where(predicate).ToListAsync();
