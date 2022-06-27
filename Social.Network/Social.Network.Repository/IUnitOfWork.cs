@@ -7,6 +7,9 @@ namespace Social.Network.Repository
     public interface IUnitOfWork : IDisposable
     {
         IUserRepository UserRepository { get; }
+        IPostRepository PostRepository { get; }
+        ICommentRepository CommentRepository { get; }
+
         Task<int> CommitAsync();
 
     }

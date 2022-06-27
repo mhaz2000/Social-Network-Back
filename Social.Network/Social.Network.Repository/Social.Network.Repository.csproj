@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Social.Network.Domain\Social.Network.Domain.csproj" />
+    <ProjectReference Include="..\Social.Network.Message\Social.Network.Message.csproj" />
   </ItemGroup>
 
 </Project>
