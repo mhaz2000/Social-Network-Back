@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Social.Network.Domain.Entities;
+using System;
 
 namespace Social.Network.Repository.Implementation
 {
@@ -15,13 +16,6 @@ namespace Social.Network.Repository.Implementation
 
 
         }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    var connectionStr = "server=localhost; port=3306; database=socialNetworkDB; user=root; password=1234; Persist Security Info=False; Connect Timeout=3000;";
-        //    optionsBuilder.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr));
-        //    base.OnConfiguring(optionsBuilder);
-        //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -28,7 +28,7 @@ namespace Social.Network.SeedWorks.Factories
             identity.AddClaim(new Claim(ClaimTypes.GivenName, user.UserName));
             identity.AddClaim(new Claim(ClaimTypes.Role, userRoles != null ? string.Join(',', userRoles) : ""));
             identity.AddClaim(new Claim("roleIds", userRoles != null ? string.Join(',', roleIds) : ""));
-            identity.AddClaim(new Claim("id", user.Id));
+            identity.AddClaim(new Claim("id", user.Id.ToString()));
 
 
             identity.AddClaim(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_jwtOptions.IssuedAt).ToString(),

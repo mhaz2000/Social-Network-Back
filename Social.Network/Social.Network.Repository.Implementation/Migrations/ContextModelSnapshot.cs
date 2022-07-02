@@ -206,7 +206,12 @@ namespace Social.Network.Repository.Implementation.Migrations
                     b.Property<Guid>("PostOwnerId")
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
@@ -219,11 +224,20 @@ namespace Social.Network.Repository.Implementation.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("Address")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Avatar")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
@@ -262,11 +276,20 @@ namespace Social.Network.Repository.Implementation.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("PostCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("TownOrCity")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -280,6 +303,8 @@ namespace Social.Network.Repository.Implementation.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -344,7 +369,28 @@ namespace Social.Network.Repository.Implementation.Migrations
 
             modelBuilder.Entity("Social.Network.Domain.Entities.Post", b =>
                 {
+                    b.HasOne("Social.Network.Domain.Entities.User", null)
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Social.Network.Domain.Entities.User", b =>
+                {
+                    b.HasOne("Social.Network.Domain.Entities.User", null)
+                        .WithMany("Friends")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Social.Network.Domain.Entities.Post", b =>
+                {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Social.Network.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Friends");
+
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }
