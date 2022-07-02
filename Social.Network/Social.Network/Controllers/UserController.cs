@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Social.Network.Domain.Entities;
 using Social.Network.Message.Commands;
+using Social.Network.Message.Dtos;
 using Social.Network.Repository;
 using Social.Network.SeedWorks;
 using Social.Network.SeedWorks.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Social.Network.Controllers
@@ -62,9 +65,95 @@ namespace Social.Network.Controllers
                 await _unitOfWork.CommitAsync();
                 return OkResult("You have been registered successfully.");
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest("An error occurred while registering user.");
+            }
+        }
+
+        [HttpPost("UpdateUserInfo")]
+        public async Task<IActionResult> UpdateUserInfo(UserUpdateCommand command)
+        {
+            try
+            {
+                await _unitOfWork.UserRepository.UpdateUserAsync(command, UserId);
+                await _unitOfWork.CommitAsync();
+
+                return OkResult("Your information is updated successfully.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while updating user information.");
+            }
+        }
+
+        [HttpGet("GetUserDetail")]
+        public async Task<IActionResult> GetUserDetail()
+        {
+            try
+            {
+                var user = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == UserId.ToString());
+                if (user is null)
+                    return NotFound("User is not found.");
+
+                return OkResult("User is found", new UserDto()
+                {
+                    Address = user.Address,
+                    Avatar = user.Avatar,
+                    Country = user.Country,
+                    Description = user.Description,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Postcode = user.PostCode,
+                    TownOrCity = user.TownOrCity,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while gettig user information.");
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUser()
+        {
+            try
+            {
+                var user = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == UserId.ToString());
+                if (user is null)
+                    return NotFound("User is not found.");
+
+                return OkResult("User is found", new UserPageDto()
+                {
+                    UserName = user.UserName,
+                    Description = user.Description,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    Friends = user.Friends is null || !user.Friends.Any() ? new List<UserDto>() : user.Friends.Select(s => new UserDto()
+                    {
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                        Username = s.UserName,
+                        Avatar = s.Avatar
+                    }).ToList(),
+                    LastName = user.LastName,
+                    Posts = user.Posts is null || !user.Posts.Any() ? new List<PostDto>() : user.Posts.Select(s => new PostDto()
+                    {
+                        Content = s.Content,
+                        Image = s.Image,
+                        PostOwnerId = user.Id
+                    }).ToList()
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while gettig user information.");
             }
         }
     }

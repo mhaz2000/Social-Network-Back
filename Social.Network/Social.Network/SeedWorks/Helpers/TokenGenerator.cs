@@ -33,7 +33,7 @@ namespace Social.Network.SeedWorks.Helpers
                 refreshToken = Convert.ToBase64String(randomNumber);
             }
 
-            var identity = _jwtFactory.GenerateClaimsIdentity(user.UserName, user.Id);
+            var identity = _jwtFactory.GenerateClaimsIdentity(user.UserName, user.Id.ToString());
             if (identity == null)
             {
                 throw new SystemException("An error occurred while calling and matching the account information!");
