@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Infrastructure\\Social.Network.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Infrastructure\\Social.Network.Infrastructure.csproj",
       "projectName": "Social.Network.Infrastructure",
-      "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Infrastructure\\Social.Network.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Infrastructure\\Social.Network.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

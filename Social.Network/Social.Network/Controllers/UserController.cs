@@ -6,6 +6,7 @@ using Social.Network.Message.Commands;
 using Social.Network.Message.Dtos;
 using Social.Network.Repository;
 using Social.Network.SeedWorks;
+using Social.Network.SeedWorks.Helpers;
 using Social.Network.SeedWorks.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -124,7 +125,7 @@ namespace Social.Network.Controllers
         {
             try
             {
-                var user = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == UserId.ToString());
+                var user = await _unitOfWork.UserRepository.GetFirstWithIncludeAsync(c => c.Id == UserId.ToString(), c => c.Posts, t => t.Friends);
                 if (user is null)
                     return NotFound("User is not found.");
 
@@ -144,8 +145,10 @@ namespace Social.Network.Controllers
                     LastName = user.LastName,
                     Posts = user.Posts is null || !user.Posts.Any() ? new List<PostDto>() : user.Posts.Select(s => new PostDto()
                     {
+                        Id = s.Id,
                         Content = s.Content,
                         Image = s.Image,
+                        Time = s.CreationDate.CalculateTime(),
                         PostOwnerId = user.Id
                     }).ToList()
                 });

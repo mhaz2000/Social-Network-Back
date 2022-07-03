@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VZAAFKETHij4S5dCt0hidp1vBTOoM5tHEyTm8STi1volyBl8t8+RiqHmvgBNMekOfq1cmjHfgZER4BFNvrqxpw==",
+  "dgSpecHash": "CZxg3vxydHDdiXlxOQ/1LDR2SEXZukYHIRoEhmvRyhEp5Wndlmgjv5YLRXSBAhOpR2DaFHFbujHHW5yR8f0+gQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -3,6 +3,7 @@ using Social.Network.Domain.Entities;
 using Social.Network.Message.Commands;
 using Social.Network.Repository.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Social.Network.Repository.Implementation.Implementations
@@ -19,7 +20,8 @@ namespace Social.Network.Repository.Implementation.Implementations
             {
                 Email = command.Email,
                 Id = Guid.NewGuid().ToString(),
-                UserName = command.Name
+                UserName = command.Name,
+                Posts = new List<Post>()
             };
 
             user.PasswordHash = _passwordHasher.HashPassword(user, command.Password);
