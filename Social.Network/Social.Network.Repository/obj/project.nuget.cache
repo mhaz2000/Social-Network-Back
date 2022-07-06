@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sJ4/WDhF6bQg4GTWKW7FXb2Bhy5btZaFMNUrDUenGdOhxcOzL65WVP8FyW6Hm684Ub12gobKOcAl5sbQVDLuJQ==",
+  "dgSpecHash": "bM/IhgoRhbUpuchj0YczPlrRw2I+kgh0U4cNO8/552CH0A36TO8AxylVFjjnzJUcHGgSEuOzZJ94neyWJLKOxg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
+  "projectFilePath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mohammad\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

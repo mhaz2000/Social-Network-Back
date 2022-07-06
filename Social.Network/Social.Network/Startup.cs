@@ -130,7 +130,7 @@ namespace Social.Network
 
             app.UseAuthentication();
             app.UseRouting();
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseCustomExceptionHandler();
             app.UseAuthorization();
 

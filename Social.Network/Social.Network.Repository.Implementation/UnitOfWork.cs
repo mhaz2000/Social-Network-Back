@@ -9,6 +9,8 @@ namespace Social.Network.Repository.Implementation
     {
         private readonly Context _context;
         private UserRepository _userRepository;
+        private PostRepository _postRepository;
+        private CommentRepository _commentRepository;
 
         public UnitOfWork(Context context)
         {
@@ -17,9 +19,9 @@ namespace Social.Network.Repository.Implementation
 
         public IUserRepository UserRepository => _userRepository = _userRepository ?? new UserRepository(_context);
 
-        public IPostRepository PostRepository => throw new NotImplementedException();
+        public IPostRepository PostRepository => _postRepository = _postRepository ?? new PostRepository(_context);
 
-        public ICommentRepository CommentRepository => throw new NotImplementedException();
+        public ICommentRepository CommentRepository => _commentRepository = _commentRepository ?? new CommentRepository(_context);
 
         public async Task<int> CommitAsync()
         {
