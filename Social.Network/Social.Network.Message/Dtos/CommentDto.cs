@@ -6,5 +6,10 @@ namespace Social.Network.Message.Dtos
     {
         public Guid CommentOwnerId { get; set; }
         public string Content { get; set; }
+        public string Time { get; set; }
+        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Avatar { get; set; }
     }
 }

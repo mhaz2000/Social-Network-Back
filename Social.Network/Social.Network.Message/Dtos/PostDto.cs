@@ -11,5 +11,7 @@ namespace Social.Network.Message.Dtos
         public string Content { get; set; }
         public string Time { get; set; }
         public ICollection<CommentDto> Comments { get; set; }
+        public string PostOwnerAvatar { get; set; }
+        public string CurrentUserAvatar { get; set; }
     }
 }

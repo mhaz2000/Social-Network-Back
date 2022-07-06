@@ -9,5 +9,7 @@ namespace Social.Network.Repository.Repositories
     {
         Task<string> CreateAsync(RegisterCommand command);
         Task UpdateUserAsync(UserUpdateCommand command,Guid userId);
+        Task AddFriendAsync(Guid userId, Guid id);
+        Task RemoveFriendAsync(Guid userId, Guid id);
     }
 }

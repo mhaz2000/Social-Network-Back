@@ -12,7 +12,7 @@ namespace Social.Network.Repository.Implementation.Implementations
 {
     public class PostRepository : Repository<Post>, IPostRepository
     {
-        public PostRepository(Context context): base(context)
+        public PostRepository(Context context) : base(context)
         {
 
         }
@@ -30,14 +30,15 @@ namespace Social.Network.Repository.Implementation.Implementations
             await Context.Posts.AddAsync(post);
 
             var users = Context.Users.Include(c => c.Posts);
-            (await users.FirstOrDefaultAsync(c=>c.Id == userId.ToString())).Posts.Add(post);
+            (await users.FirstOrDefaultAsync(c => c.Id == userId.ToString())).Posts.Add(post);
 
             return post.Id;
         }
 
         public async Task DeletePost(Guid postId)
         {
-            var post = await Context.Posts.FindAsync(postId);
+            var post = await Context.Posts.Include(c => c.Comments).FirstOrDefaultAsync(c => c.Id == postId);
+            Context.Comments.RemoveRange(post.Comments);
             Context.Posts.Remove(post);
         }
 

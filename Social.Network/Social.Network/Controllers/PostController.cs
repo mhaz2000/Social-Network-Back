@@ -45,7 +45,11 @@ namespace Social.Network.Controllers
         {
             try
             {
+                var currentUser = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == UserId.ToString());
                 var post = await _unitOfWork.PostRepository.GetFirstWithIncludeAsync(c => c.Id == id, t => t.Comments);
+
+                var postOwner = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == post.PostOwnerId.ToString());
+
                 return OkResult("Post is found", new PostDto()
                 {
                     Content = post.Content,
@@ -53,6 +57,8 @@ namespace Social.Network.Controllers
                     Image = post.Image,
                     Time = post.CreationDate.CalculateTime(),
                     PostOwnerId = post.PostOwnerId.ToString(),
+                    PostOwnerAvatar = postOwner.Avatar,
+                    CurrentUserAvatar = currentUser.Avatar,
                     Comments = post.Comments is null || !post.Comments.Any() ? new List<CommentDto>() : post.Comments.Select(s => new CommentDto()
                     {
                         Content = s.Content,
@@ -110,6 +116,42 @@ namespace Social.Network.Controllers
                 return BadRequest("Something went wrong while deleting the post!");
             }
 
+        }
+
+        [HttpGet("GetAllPosts")]
+        public async Task<IActionResult> GetPosts()
+        {
+            try
+            {
+                var posts = await _unitOfWork.PostRepository.GetListWithIncludeAsync("Comments");
+                List<PostListDto> postsDto = new List<PostListDto>();
+
+                foreach (var post in posts)
+                {
+                    var postOwner = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == post.PostOwnerId.ToString());
+                    postsDto.Add(new PostListDto()
+                    {
+                        CommentsCount = post.Comments.Count(),
+                        Image = post.Image,
+                        Content = post.Content,
+                        Time = post.CreationDate.CalculateTime(),
+                        Id = post.Id,
+                        PostOwnerId = post.PostOwnerId,
+                        PostOwnerAvatar = postOwner.Avatar,
+                        FirstName = postOwner.FirstName,
+                        LastName = postOwner.LastName,
+                        Username  = postOwner.UserName
+                    });
+                }
+
+                return OkResult("Get all posts", postsDto);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("Something went wrong while getting posts!");
+            }
         }
 
         private void DeleteFile(Guid id)

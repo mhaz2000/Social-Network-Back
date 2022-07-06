@@ -91,11 +91,12 @@ namespace Social.Network.Controllers
         }
 
         [HttpGet("GetUserDetail")]
-        public async Task<IActionResult> GetUserDetail()
+        public async Task<IActionResult> GetUserDetail(string userId = null)
         {
             try
             {
-                var user = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == UserId.ToString());
+                var user = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == (userId ?? UserId.ToString()));
+                var currentUser = await _unitOfWork.UserRepository.FirstOrDefaultAsync(c => c.Id == UserId.ToString());
                 if (user is null)
                     return NotFound("User is not found.");
 
@@ -105,11 +106,12 @@ namespace Social.Network.Controllers
                     Avatar = user.Avatar,
                     Country = user.Country,
                     Description = user.Description,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
+                    FirstName = currentUser.FirstName,
+                    LastName = currentUser.LastName,
                     Postcode = user.PostCode,
                     TownOrCity = user.TownOrCity,
                     Email = user.Email,
+                    Username = currentUser.UserName,
                     PhoneNumber = user.PhoneNumber
                 });
             }
@@ -121,22 +123,27 @@ namespace Social.Network.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUser()
+        public async Task<IActionResult> GetUser(Guid? id)
         {
             try
             {
-                var user = await _unitOfWork.UserRepository.GetFirstWithIncludeAsync(c => c.Id == UserId.ToString(), c => c.Posts, t => t.Friends);
+                var user = await _unitOfWork.UserRepository.
+                    GetFirstWithIncludeAsync(c => id != null ? c.Id == id.Value.ToString() : c.Id == UserId.ToString(), c => c.Posts, t => t.Friends);
+
                 if (user is null)
                     return NotFound("User is not found.");
 
                 return OkResult("User is found", new UserPageDto()
                 {
+                    Id = user.Id,
                     UserName = user.UserName,
                     Description = user.Description,
                     Email = user.Email,
                     FirstName = user.FirstName,
+                    Avatar = user.Avatar,
                     Friends = user.Friends is null || !user.Friends.Any() ? new List<UserDto>() : user.Friends.Select(s => new UserDto()
                     {
+                        Id = s.Id,
                         FirstName = s.FirstName,
                         LastName = s.LastName,
                         Username = s.UserName,
@@ -149,7 +156,8 @@ namespace Social.Network.Controllers
                         Content = s.Content,
                         Image = s.Image,
                         Time = s.CreationDate.CalculateTime(),
-                        PostOwnerId = user.Id
+                        PostOwnerId = user.Id,
+                        PostOwnerAvatar = user.Avatar
                     }).ToList()
                 });
             }
@@ -157,6 +165,75 @@ namespace Social.Network.Controllers
             {
                 Console.WriteLine(e.Message);
                 return BadRequest("An error occurred while gettig user information.");
+            }
+        }
+
+        [HttpGet("CheckUser/{id}")]
+        public async Task<IActionResult> CheckUser(Guid id)
+        {
+            try
+            {
+                if (await _unitOfWork.UserRepository.AnyAsync(v => v.Id == id.ToString()) && id != UserId)
+                    return OkResult("User is found.");
+                else
+                    return NotFound("User is not found!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while gettig user information.");
+            }
+        }
+
+        [HttpPost("AddFriend/{id}")]
+        public async Task<IActionResult> AddFriend(Guid id)
+        {
+            try
+            {
+                await _unitOfWork.UserRepository.AddFriendAsync(UserId, id);
+                await _unitOfWork.CommitAsync();
+
+                return OkResult("You have new friend now!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while adding friend.");
+            }
+        }
+
+        [HttpDelete("RemoveFriend/{id}")]
+        public async Task<IActionResult> RemoveFriend(Guid id)
+        {
+            try
+            {
+                await _unitOfWork.UserRepository.RemoveFriendAsync(UserId, id);
+                await _unitOfWork.CommitAsync();
+
+                return OkResult("You have removed your friend!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while removing friend.");
+            }
+        }
+
+        [HttpGet("CheckFriend/{id}")]
+        public async Task<IActionResult> CkeckFriend(Guid id)
+        {
+            try
+            {
+                var currentUser = await _unitOfWork.UserRepository.GetFirstWithIncludeAsync(c => c.Id == UserId.ToString(), t => t.Friends);
+                if (currentUser.Friends.Any(c => c.Id == id.ToString()))
+                    return OkResult("That's your friend");
+                else
+                    return NotFound("That's not your friend!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest("An error occurred while getting friend info!");
             }
         }
     }
