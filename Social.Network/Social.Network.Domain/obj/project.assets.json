@@ -1733,11 +1733,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj",
       "projectName": "Social.Network.Domain",
-      "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj",
+      "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj",
       "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

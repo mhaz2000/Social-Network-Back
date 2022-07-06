@@ -1800,11 +1800,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
       "projectName": "Social.Network.Repository",
-      "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
+      "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\Social.Network.Repository.csproj",
       "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\obj\\",
+      "outputPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1824,11 +1824,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj": {
-              "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj"
+            "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj": {
+              "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Domain\\Social.Network.Domain.csproj"
             },
-            "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Message\\Social.Network.Message.csproj": {
-              "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\Web Project\\Social Network\\Social-Network-Back\\Social.Network\\Social.Network.Message\\Social.Network.Message.csproj"
+            "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Message\\Social.Network.Message.csproj": {
+              "projectPath": "C:\\Users\\Mohammad\\Desktop\\Me\\Programming\\WebProject\\SocialNetwork\\Social-Network-Back\\Social.Network\\Social.Network.Message\\Social.Network.Message.csproj"
             }
           }
         }
