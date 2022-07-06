@@ -46,6 +46,7 @@ namespace Social.Network.Controllers
 
                 return OkResult("Post comments were found.", comments.Select(s => new CommentDto()
                 {
+                    Id = s.Id,
                     CommentOwnerId = s.CommentOwnerId,
                     Content = s.Content,
                     Time = s.CreationDate.CalculateTime(),

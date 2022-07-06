@@ -59,6 +59,9 @@ namespace Social.Network.Controllers
                     PostOwnerId = post.PostOwnerId.ToString(),
                     PostOwnerAvatar = postOwner.Avatar,
                     CurrentUserAvatar = currentUser.Avatar,
+                    PostOwnerFirstName = postOwner.FirstName,
+                    PostOwnerLastName = postOwner.LastName,
+                    PostOwnerUsername = postOwner.UserName,
                     Comments = post.Comments is null || !post.Comments.Any() ? new List<CommentDto>() : post.Comments.Select(s => new CommentDto()
                     {
                         Content = s.Content,

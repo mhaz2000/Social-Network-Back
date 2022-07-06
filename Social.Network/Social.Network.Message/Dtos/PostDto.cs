@@ -13,5 +13,8 @@ namespace Social.Network.Message.Dtos
         public ICollection<CommentDto> Comments { get; set; }
         public string PostOwnerAvatar { get; set; }
         public string CurrentUserAvatar { get; set; }
+        public string PostOwnerFirstName { get; set; }
+        public string PostOwnerLastName { get; set; }
+        public string PostOwnerUsername { get; set; }
     }
 }
